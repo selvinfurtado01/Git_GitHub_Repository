@@ -1,0 +1,232 @@
+Module 1: Introduction to Git and GitHub
+
+- Version Control
+
+A system that tracks changes to files/projects over time, allowing users to revert to previous versions, collaborate effectively, and manage different development paths
+Example: Git is a Version Control System
+
+- Features:
+1. Takes snapshot of images
+2. History view
+3. Rollback changes
+4. Allows for Collaboration
+
+- History of Git
+
+It was created by Linus Torvalds in 2005 to manage the development of Linux who also created Linux
+Git efficiently handles large projects with its fast performance and robust data integrity features
+
+- Git
+
+It is an open source distributed version control system that tracks changes to source code during software development
+Allows multiple users to work on a project simultaneously without overwriting each other's changes
+It provides tools: Branching, Merging and tracking progress across various versions of the codebase
+It is preinstalled on a Linux and Mac OS but needs to be installed on Windows
+It can be integrated with many other applications (SourceTree, Heroku, GitHub)
+
+- History of GitHub
+
+Founded in 2008and created by Tom Preston Werner, Chris Wanstrath, PJ Hyett and Scott Chacon
+Acquired by Microsoft in 2018 for 7 Billion Dollars
+It is used for software development with its Git repository hosting service, supporting open-source and private projects
+
+- GitHub and Version Control Features
+
+1. Cloud-Based Storage 	 	>> Offers Cloud-based Platform for software developers to store and manage their code securely and efficiently 
+2. Version Control System	>> It utilizes Git for a Version Control System, enabling users to track and store different versions of their code
+3. Collaboration Facilitation	>> It enhances collaboration by providing tools for code review, issue tracking and pull requests
+
+- Git vs GitHub
+
+1. Software vs Service
+2. CLI vs GUI
+3. Installed on System vs Hosted on Web
+4. Maintained by Linux vs Maintained by Microsoft
+5. Version Control + Code Sharing vs Centralized source code hosting
+
+
+- Git Bash
+
+1. Checking Git version
+Command	: git --version
+Output	: git version 2.51.0.windows.1
+
+2. Setting Git Configurations
+Command: git config --global user.name "Selvin" >> Setting Username
+Command: git config --global user.email "selvinfurtado2000@gmail.com" >> Setting Email
+
+- Basic Git Workflow
+
+[git init] >> Working Directory >> [git add] >> Staging Area >> [git commit] >> Repository
+
+git init 	>> Initialization (creates a .git folder and turn it into a git repository)
+Directory 	>> Making changes to files (Addition, Deletion, Modification)
+git add 	>> Adding Files/paths, workflows (Tells which files to track and include in the next update)
+Staging Area 	>> Files are ready to be updated/commited; Files haven't be saved yet and is getting ready to be saved; It has all the updated changes/modifications
+git commit 	>> Helps update/push files with a message and creates and saves the snapshot; Commits files only that have been added via git add
+Repository 	>> All changes are saved and stored in the repository
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Module 2: Bash and Git Commands
+
+- Git Initialization
+It is used to create a new repository for our project
+
+Command: git init >> Creates a new repository (.git folder) on the file path mentioned on the computer system
+
+Command: ls >> Lists all the files present in the current file path
+
+Command: cd "C:\Users\LENOVO\Git_Repo_Test" >> Change Directory to the file path mentioned
+
+Command: git status >> Lists down the path of all the files(tracked/untracked files) where git was initialized (git init) on the master directory
+
+- If no files are present and you just git initialized and created an empty .git folder
+Output: On branch master
+	No commits yet
+	nothing to commit (create/copy files and use "git add" to track)
+
+- Git Add
+Command: git add . >> This adds all the untracked files to the staging/caching area(tracks files) and is ready to be committed to the main branch 
+Command: git add test_python_script.py >> Only adds the file specified and not all the untracked files in the staging/caching area
+
+Command: git rm --cached . >> Removes all the files that have been added to the staging/caching area
+Command: git rm --cached test_python_script.py >> Removes only the file specified that has been added to the staging/caching area
+
+Command: git config --list: Lists all the configurations that have been set up along with global variables in the git environment
+Exit: To exit this list press "q" to quit the list
+
+- Git Commit
+Command: git commit >> Helps to update/push files to the main branch using a commit message for trackability
+Exit: Press the "Esc" Key and then insert ":wq" >> This indicates to write and quit the file and then the file is committed to the main branch
+
+Command: git commit -m "Second Commit in Git Repository" >> This command is used to specify commit message while running the git commit command (-m : message)
+- This is a faster approach rather than opening the file and adding the commit message and the commit message can be inserted with the command
+
+- Accessing Previous Git Commits
+
+Command: git log >> Displays the logs of all previous commits along with their commit hash, message, author and datetime at which the file was committed
+This helps monitor and track all previous logs and snapshots and the commit hash is a reference id of the file that was committed
+
+Command: git checkout <branch_name>/<commit_hash>
+Example: git checkout 158c46059e1ga612aa790490edg98e50d1b47a35 >> This let's us access the file committed to this commit hash id
+By specifying the commit hash id using the git checkout command helps us to work on the branch name specified and access that particular commit version
+Here, we can also switch between branches and restore previous file versions from previous git commit history
+
+Command: git checkout master >> This let's us navigate back to our current and most updated commit which is the main branch of our git repository
+
+Command: git branch >> Displays the current branch we are working on in the indicated working directory
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Module 3: Connecting Git to GitHub Account and Git Terminologies
+
+Step 1: Create a New Repository on GitHub along with a Readme file and a description and keep it public/private based on your use case
+
+Step 2: Got to the Code Tab and copy the HTTPS link in order to connect your GitHub repository to the remote bash terminal
+
+Step 3: Command: git remote add origin <https_link>
+Example: git remote add origin https://github.com/selvin/Git_and_GitHub_New_Repository.git
+This connects your GitHub repository to the bash terminal and files and folders can be navigated once you gave connected them
+
+Step 4: Command: git branch -m main >> Changes the master branch name to main as it is indicated as main branch on GitHub and for compatibility/consistency purposes
+
+Step 5: If you have created a Readme File while creating the repository, first you will have to pull the file to the local branch
+
+Command: git pull origin main
+-Note: If there is an error message: refusing to merge unrelated histories
+
+Command: git pull origin main --allow-unrelated-histories >> This will resolve the unrelated histories issue
+However, this could lead to unexpected merge conflicts if there is no common ancestor in that case first clone repo (git clone <https_link> and then git push)
+
+Step 6: Command: git push -u origin main >> This pushes all the files to the main branch
+Note: -u: upstream >> It sets up a tracking relationship between our local branch and GitHub main branch and pushes all files from local to GitHub repository
+
+- Cloning
+It creates a full copy of the origin repository including: All Files, Branches and Commit History
+It can be cloned to a different repository or your local computer repository
+Command: git clone <repository_name>
+
+- Branches
+It helps define and work on a specific task
+Commits can be made to the specified branch
+Pull requests are used to merge those changes back into the main branch from a different branch
+
+- Pull Requests
+It is created to track updated changes and review and get feedback and then merge into the main branch 
+Comments, suggestions and tips can be added as well as requests to edit the change can be made
+Once everything is approved the updated pull request can be merged with the main branch
+
+- Merges
+It combines all recent commits and updates to the main branch
+It then provides an entire history of all the changes that have been updated
+It also resolves any conflicts if the same lines of code were changed in both branches
+
+- GitHub Issues
+This is used to track issues and assign it to a particular individual to solve the issue and then can be closed once the issue is resolved
+Mention a Description, Assigned Individual and Code that has an Issue
+
+- GitHub Actions
+Ready to use packages with code files that can be integrated and used within your project or GitHub repository
+
+- GitHub Project
+Helps create a project for a team/individual to track files, commits and various pull requests, helps organize the project in an efficient manner
+
+- GitHub Wiki
+Helps document the current and next steps in your project and can be used to layout a roadmap for the project along with the project status
+
+- GitHub Releases
+It is used to create a snapshot of all the code and files that have been combined into a single version and can be used by others 
+Tag and Version Title needs to be assigned to create a release
+Example: Tag: v1.0.0 and Version Title: Version_1_Release_v1.0.0-8.1.2025
+Also, Target branch can be specified whether it would be the main branch or a different branch for the release
+
+Output: Once created, contributors and others can download the zip file or tar.gz file of the release and access the new release version (all code and files)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Module 4: Git and GitHub Workflows
+
+Workflow Structure:
+ 
+Create Repository >> Initialize Repository >> Pull Data >> Create New Branch >> Update Changes >> Create Pull Request >> Merge Branch >> Push Data Main Branch
+
+- This is a Git Workflow to initialize, add, update, commit and merge files to the main branch
+- This Workflow is followed to push any new changes to the main branch while also maintaining a snapshot of the change within the commit history
+- The new created branch can be later deleted after merging with main branch or can be kept incase there are changes that need to be reverted 
+
+- Creating and Switching Branches in Git
+
+Command: git checkout -b <branch_name> >> Example: git checkout -b feature/add_new_code 
+This command helps us create and switch to a new branch in the repository called feature/add_new_code
+
+Then similarly to push code through new branch and create a pull request on GitHub through Git:
+Step 1: Update all changes to the code and save the updated files on your local computer
+
+Step 2: Git Push >> Command: git push -u origin <branch_name> 
+Example: git push -u origin feature/add_new_code    
+
+Step 3: Compare and Pull request on GitHub and Create Pull Request
+
+Step 4: Check for any Conflicts that need to be resolved and Merge Pull Request
+
+Step 5: All changes are reflected in main branch and now we can delete the feature/add_new_code branch
+
+- Git Fetch and Merge
+
+Workflow Structure: Remote Repository(GitHub) >> Git Fetch (Pull Data) >> Git Merge (Merge Data) >> Working Directory
+This essentially lets us fetch all the data on the remote repository and then merge the data to the current working directory on the local computer
+This helps us check for all the new files before merging them with the current working directory
+This is similar to git pull but is performed in two steps and is much more secure and helps with maintaining consistencies
+
+Command: git fetch origin >> This helps fetch all the files that have been committed to the main branch
+Command: git merge origin/main >> This merges all the recently committed files on the main branch and adds them to the working directory
+
+- Reverting back to the previous commit
+
+New working on new updates and changes to the code files in a new branch and for some reason after changes are done you need to revert to the original main branch files
+Command: git revert <branch_name>
+Example: git revert 158c46059e1ga612aa790490edg98e50d1b47a35
+This command helps us to revert back to the branch whose hash_id was mentioned in the command >> In this case the main branch i.e. reverted to original code
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
